@@ -18,9 +18,26 @@ const enter = document.querySelector('#enter');
 const sign = document.querySelector('#sign');
 const output = document.querySelector('#outputLine');
 
+let begin = true;
+const symbols = ['+', '-', '*', '/'];
 
-function equationCreation(){
+function equationCreation(input){
+    console.log(symbols.includes(input))
+    if(begin == true){
+        begin = false;
+        output.innerHTML = input;
+        return
+    }else if(symbols.includes(input) == "true" && begin == "true"){
+        alert("You must input a number other than 0 before you add an operator");
+        return
+    }
 
+    output.innerHTML = output.innerHTML + " " + input;
+}
+
+function clearEverything(){
+    output.innerHTML = 0;
+    begin = true;
 }
 
 function operate(){
