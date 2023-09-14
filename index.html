@@ -9,38 +9,39 @@
 </head>
 <body>
     <div>
-        <h1 id="outputLine"> 0 </h1>
+        <h2 id="historyLine"></h2>
+        <h1 id="outputLine">0</h1>
     </div>
    
     <div class="row4"> 
         <button onclick="equationCreation(7)" type="button" id="seven">7</button> 
         <button onclick="equationCreation(8)" type="button" id="eight">8</button> 
         <button onclick="equationCreation(9)" type="button" id="nine">9</button>
-        <button onclick="equationCreation('+')" type="button" id="add">+</button>
+        <button onclick="equationCreation('+'); operator('+')" type="button" id="add">+</button>
     </div>
 
     <div class="row3"> 
         <button onclick="equationCreation(4)" type="button" id="four">4</button> 
         <button onclick="equationCreation(5)" type="button" id="five">5</button> 
         <button onclick="equationCreation(6)" type="button" id="six">6</button> 
-        <button onclick="equationCreation('-')" type="button" id="subtract">-</button> 
+        <button onclick="equationCreation('-'); operator('-')" type="button" id="subtract">-</button> 
     </div>
 
     <div class="row2"> 
         <button onclick="equationCreation(1)" type="button" id="one">1</button> 
         <button onclick="equationCreation(2)" type="button" id="two">2</button> 
         <button onclick="equationCreation(3)" type="button" id="three">3</button> 
-        <button onclick="equationCreation('*')" type="button" id="multiply">*</button> 
+        <button onclick="equationCreation('*'), operator('*')" type="button" id="multiply">*</button> 
     </div>
 
     <div class="row1"> 
         <button onclick="equationCreation(0)" type="button" id="zero">0</button> 
         <button onclick="equationCreation('.')" type="button" id="decimal">.</button> 
         <button onclick="equationCreation('sign')" type="button" id="sign">+/-</button> 
-        <button onclick="equationCreation('/')" type="button" id="divide">/</button> 
+        <button onclick="equationCreation('/'), operator('/')" type="button" id="divide">/</button> 
     </div>
   
-    <button type="button" id="enter">Enter</button> 
+    <button onclick="operate()" type="button" id="enter">Enter</button> 
     <button onclick="clearEverything()" type="button" id="clear">Clear</button> 
 
 
