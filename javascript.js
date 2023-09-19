@@ -34,6 +34,14 @@ const symbols = ['+', '-', '*', '/'];
 let answer = ''
 let num1 = ''
 let num2 = ''
+let num1Dec = false;
+let num2Dec = false;
+
+
+//KNOWN BUGS  
+//Sign button will produce multiple negative signs even without a number present
+
+
 
 
 function operatorFunction(entry){
@@ -42,6 +50,7 @@ function operatorFunction(entry){
         operate();
         num2 = ''
         num1 = answer;
+        num2Dec = false;
         output.innerHTML = output.innerHTML + ' ' + entry + ' ';
         operator = entry;
         return;
@@ -50,29 +59,89 @@ function operatorFunction(entry){
     equationCreation(entry);
 }
 
+function changeSign(){
+    
 
+    debugger
+    if(answer !== '' && answer > 0){
+        answer = '-' + answer;
+        output.innerHTML = '-' + answer;
+        return;
+    }else if(answer !== '' && answer < 0){
+        output.innerHTML = '+' + answer.substring(1,answer.length);
+        return;
+    }
+    
+    if(operator == ''){
+        if(num1 < 0){
+            num1 = num1.substring(1, num1.length);
+            output.innerHTML = num1;
+            return;
+        }
+        num1 = '-' + num1;
+        output.innerHTML = num1;
+        return;
+    }
+    else{
+        if(num2 < 0){
+            num2 = num2.substring(1, num2.length);
+            output.innerHTML = num1 + ' ' + operator + ' ' + num2;
+            return;
+        }
+        num2 = '-' + num2;
+        output.innerHTML = num1 + ' ' + operator + ' ' + num2;
+    }
+}
 
 function equationCreation(input){
-    if(begin == true){
+
+    if(begin == true && input !== '.'){
         begin = false;
         output.innerHTML = input;
         num1 = input;
         return;
     }
-
     if(symbols.includes(input)){
         output.innerHTML = output.innerHTML + ' ' + input + ' ';
+        answer = '';
         return;
     }
-
-    if(begin == false && !symbols.includes(operator)){
+    if(!symbols.includes(operator)){
+        if(input == '.' && num1Dec == false){
+            begin = false;
+            num1Dec = true;
+            output.innerHTML = output.innerHTML + input;
+            num1 = num1 + input;
+            answer = '';
+            return;
+        }
+        else if(input == '.' && num1Dec == true){
+            alert("Cannot have multiple decimals")
+            return;
+        }
+        begin = false;
         output.innerHTML = output.innerHTML + input;
-        num1 = num1 + input;
+        num1 = num1.toString() + input;
+        answer = '';
         return;
     }
-    else if(begin == false && symbols.includes(operator)){
+    else if(symbols.includes(operator)){
+        if(input == '.' && num2Dec == false){
+            begin = false;
+            num2Dec = true;
+            output.innerHTML = output.innerHTML + input;
+            num2 = num2 + input;
+            answer = '';
+            return;
+        }
+        else if(input == '.' && num2Dec == true){
+            alert("Cannot have multiple decimals")
+            return;
+        }
+        begin = false;
         output.innerHTML = output.innerHTML + input;
         num2 = num2 + input;
+        answer = '';
         return;
     }
 }
@@ -88,8 +157,6 @@ function clearEverything(){
     num2 = '';
 }
 
-//FIGURE OUT HOW WHY UNDEFINED IS GIVEN WHEN YOU PRESS ANOTHER OPERATOR AFTER YOU AN EQUATION
-
 function operate(){
     if(num1 == undefined){
         history.innerHTML = output.innerHTML;
@@ -99,17 +166,29 @@ function operate(){
     if(operator == '+'){
         answer = Number(num1) + Number(num2);
         history.innerHTML = output.innerHTML;
-        output.innerHTML = answer;
+        if(Number.isInteger(answer)){
+            output.innerHTML = answer;
+            return;
+        }
+        output.innerHTML = answer.toFixed(2);
     }
     else if(operator == '-'){
         answer = Number(num1) - Number(num2);
         history.innerHTML = output.innerHTML;
-        output.innerHTML = answer;
+        if(Number.isInteger(answer)){
+            output.innerHTML = answer;
+            return;
+        }
+        output.innerHTML = answer.toFixed(2);
     }
     else if(operator == '*'){
         answer = Number(num1) * Number(num2);
         history.innerHTML = output.innerHTML;
-        output.innerHTML = answer; 
+        if(Number.isInteger(answer)){
+            output.innerHTML = answer;
+            return;
+        }
+        output.innerHTML = answer.toFixed(2);
     }
     else if(operator == '/'){
         if(num2 == '0'){
@@ -119,7 +198,11 @@ function operate(){
         }
         answer = Number(num1) / Number(num2);
         history.innerHTML = output.innerHTML;
-        output.innerHTML = answer; 
+        if(Number.isInteger(answer)){
+            output.innerHTML = answer;
+            return;
+        }
+        output.innerHTML = answer.toFixed(2);
     }
 }
 
