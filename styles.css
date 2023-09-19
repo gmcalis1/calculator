@@ -1,0 +1,11 @@
+.calcBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.quadRow{
+    width: 200px;
+    height: 100px;
+    font-size: xx-large;
+}
