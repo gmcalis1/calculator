@@ -8,7 +8,17 @@
     width: 200px;
     height: 100px;
     font-size: xx-large;
+    margin: 0px;
 }
 
+.enterClear{
+    width: 400px;
+    height: 100px;
+    font-size: xx-large;
+}
+
+.row1, .row2, .row3, .row4, .row0{
+    font-size: 0;
+}
 
 
