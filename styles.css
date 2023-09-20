@@ -7,6 +7,7 @@
 .quadRow{
     width: 200px;
     height: 100px;
+    font-family: "Roboto", sans-serif;
     font-size: xx-large;
     margin: 0px;
 }
@@ -17,8 +18,29 @@
     font-size: xx-large;
 }
 
+/*gets rid of spaces between buttons*/
 .row1, .row2, .row3, .row4, .row0{
     font-size: 0;
 }
+
+#historyLine{
+    width: 780px;
+    text-align: right;
+    font-family: "Roboto", sans-serif;
+    font-size: 65px;
+    margin: 0;
+    padding: 10px;
+    background-color: lightpink;
+}
+#outputLine{
+    width: 780px;
+    text-align: right;
+    font-family: "Roboto", sans-serif;
+    font-size: 75px;
+    padding: 10px;
+    margin: 0;
+    background-color: lightgray;
+}
+
 
 

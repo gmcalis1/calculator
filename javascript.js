@@ -16,7 +16,6 @@ const subtract = document.querySelector('#subtract');
 const multiply = document.querySelector('#multiply');
 const divide = document.querySelector('#divide');
 
-
 // Function Buttons
 const clear = document.querySelector('#clear');
 const enter = document.querySelector('#enter');
@@ -37,12 +36,8 @@ let num2 = ''
 let num1Dec = false;
 let num2Dec = false;
 
-
 //KNOWN BUGS  
 //Sign button will produce multiple negative signs even without a number present
-
-
-
 
 function operatorFunction(entry){
     if(operator !== ''){
@@ -61,8 +56,6 @@ function operatorFunction(entry){
 
 function changeSign(){
     
-
-    debugger
     if(answer !== '' && answer > 0){
         answer = '-' + answer;
         output.innerHTML = '-' + answer;
